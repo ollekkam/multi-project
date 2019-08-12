@@ -8,18 +8,18 @@ script:
         - docker run -e CI=true srinivas/react-test npm test
 
 after_success:
-        - docker build -t myrepo/multi-client ./client
-        - docker build -t myrepo/multi-worker ./worker
-        - docker build -t myrepo/multi-nginx ./nginx
-        - docker build -t myrepo/multi-server ./server
+        - docker build -t ollekkam1/myrepo:multi-client ./client
+        - docker build -t ollekkam1/myrepo:multi-worker ./worker
+        - docker build -t ollekkam1/myrepo:multi-nginx ./nginx
+        - docker build -t ollekkam1/myrepo:multi-server ./server
 # login to docker cli
 
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # take those images and push them to docker hub
 
-        - docker push myrepo/multi-client
-        - docker push myrepo/multi-worker
-        - docker push myrepo/multi-nginx
-        - docker push myrepo/multi-server
+        - docker push ollekkam1/myrepo:multi-client
+        - docker push ollekkam1/myrepo:multi-worker
+        - docker push ollekkam1/myrepo:multi-nginx
+        - docker push ollekkam1/myrepo:multi-server
 
